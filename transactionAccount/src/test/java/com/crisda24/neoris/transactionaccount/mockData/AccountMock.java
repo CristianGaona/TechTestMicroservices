@@ -4,15 +4,8 @@ import com.crisda24.neoris.transactionaccount.application.common.dtos.account.Ac
 import com.crisda24.neoris.transactionaccount.application.common.dtos.account.AccountRequestPatchDto;
 import com.crisda24.neoris.transactionaccount.domain.enums.AccountType;
 import com.crisda24.neoris.transactionaccount.domain.models.Account;
-import com.crisda24.neoris.transactionaccount.domain.models.Movement;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class AccountMock {
     public static Account createAccountEntity() {
@@ -43,8 +36,5 @@ public class AccountMock {
         accountRequestPatchDto.setStatus(false);
         return accountRequestPatchDto;
     }
-
-
-
 
 }

@@ -80,13 +80,11 @@ public class MovementServiceImpl implements MovementService {
         List<ClientInfoResponseDto> clientInfoList = publisherService.sendAndReceiveClientsInfo(clientIds);
         List<MovementRangeDateDtoI> movements = null;
         if(accountNumber != null && clientId != null ){
-            System.out.println("CASO 1");
             movements = movementRepository.retrieveMovemenstByDates(startDate, endDate, accountNumber, clientId);
         }else if(accountNumber != null){
-            System.out.println("CASO 2");
             movements = movementRepository.retrieveMovemenstByDates(startDate, endDate, accountNumber);
         }else{
-            System.out.println("CASO 3");
+
             movements = movementRepository.retrieveMovemenstByDates(startDate, endDate, clientId);
         }
 

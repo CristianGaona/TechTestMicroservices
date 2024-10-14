@@ -60,5 +60,4 @@ class AccountRepositoryTest {
         assertNotEquals(1, numberAccountsByClient);
     }
 
-
 }
