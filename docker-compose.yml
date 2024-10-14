@@ -7,7 +7,7 @@ services:
     container_name: clients_db
     restart: always
     volumes:
-      - ./db/sql/create_schema.sql:/docker-entrypoint-initdb.d/BaseDatosClientes.sql
+      - ./db/sql/BaseDatosClientes.sql:/docker-entrypoint-initdb.d/BaseDatosClientes.sql
     environment:
       - POSTGRES_DB=clients-db
       - POSTGRES_USER=crisdaneo24
@@ -22,7 +22,7 @@ services:
     container_name: transactions_db
     restart: always
     volumes:
-      - ./db/sql/create_schema.sql:/docker-entrypoint-initdb.d/BaseDatosCuentasMovimientos.sql
+      - ./db/sql/BaseTransacciones.sql:/docker-entrypoint-initdb.d/BaseTransacciones.sql
     environment:
       - POSTGRES_DB=transactions-db
       - POSTGRES_USER=crisdaneo24
@@ -74,6 +74,14 @@ services:
       context: .
       dockerfile: ./transactionAccount/Dockerfile
     container_name: ms-transactions
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'        # Limitar el uso de CPU a 2 núcleos
+          memory: 4g         # Limitar la memoria a 4 GB
+        reservations:
+          cpus: '1.0'        # Reservar 1 núcleo de CPU
+          memory: 2g
     ports:
       - "8081:8081"
     depends_on:

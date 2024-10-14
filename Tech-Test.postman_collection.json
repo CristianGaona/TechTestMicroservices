@@ -1,0 +1,462 @@
+{
+	"info": {
+		"_postman_id": "bdb0ec97-a197-4ea1-a8e3-2cbc25858fab",
+		"name": "Tech-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5796275"
+	},
+	"item": [
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan Osorio\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 23,\r\n    \"address\": \"13 de junio y Equinoccial\",\r\n    \"phoneNumber\": \"098254787\",\r\n    \"identification\": \"1106015607\",\r\n    \"password\": \"1245\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan Osorio\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 23,\r\n    \"address\": \"13 de junio y Equinoccial\",\r\n    \"phoneNumber\": \"098254787\",\r\n    \"identification\": \"1106015607\",\r\n    \"password\": \"1245\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"age\": 100\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete / Deactivate",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cristian Gaona\",\r\n    \"gender\":\"MALE\",\r\n    \"age\":\"30\",\r\n    \"address\": \"Loja, Las pitas\",\r\n    \"phoneNumber\": \"+593985880290\",\r\n    \"identification\": \"1106015504\",\r\n    \"password\": \"superPrivado\",\r\n    \"status\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve clients",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cristian Gaona\",\r\n    \"gender\":\"MALE\",\r\n    \"age\":\"30\",\r\n    \"address\": \"Loja, Las pitas\",\r\n    \"phoneNumber\": \"+593985880290\",\r\n    \"identification\": \"1106015504\",\r\n    \"password\": \"superPrivado\",\r\n    \"status\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "Create account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "EN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"585545\",\r\n    \"accountType\": \"CORRIENTE\",\r\n    \"initBalance\": 1000,\r\n    \"status\": true,\r\n    \"idClient\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/accounts/34567135",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"34567135"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve by account number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/accounts/345671351",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"345671351"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account patch",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": false,\r\n    \"accountNumber\": \"345671351\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/accounts/345671351",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"345671351"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"item": [
+				{
+					"name": "Create movement",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movementType\": \"RETIRO\",\r\n    \"value\": -540,\r\n    \"accountNumber\": \"496825\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/movements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve movements by account number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/movements/reports?accountNumber=34567135&startDate=2024-10-06&endDate=2024-10-13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"movements",
+								"reports"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "34567135"
+								},
+								{
+									"key": "startDate",
+									"value": "2024-10-06"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-10-13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve movements by client id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/movements/reports?clientId=12&startDate=2024-10-06&endDate=2024-10-13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"movements",
+								"reports"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "12"
+								},
+								{
+									"key": "startDate",
+									"value": "2024-10-06"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-10-13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve movements by client id and account number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/movements/reports?clientId=7&accountNumber=345671352&startDate=2024-10-06&endDate=2024-10-13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"movements",
+								"reports"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "7"
+								},
+								{
+									"key": "accountNumber",
+									"value": "345671352"
+								},
+								{
+									"key": "startDate",
+									"value": "2024-10-06"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-10-13"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

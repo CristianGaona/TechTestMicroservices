@@ -2,7 +2,7 @@
 Implementación de dos microservicios agrupando (Clientes, Persona) y (Cuenta, Movimentos) contemplar comunicación asíncrona entre los dos microservicios
 
 # Arquitectura propuesta para la solución 
-![Ejemplo de imagen](./images/arquitectura_propuesta.jpg)
+![imagen](https://file.notion.so/f/f/b9664e7a-d593-464f-88e0-4e248b735e18/d425dd87-c72e-4a3b-ad2d-034ef17d60ab/image.png?table=block&id=72dc06ae-e955-419a-add5-b2cd0a3263f5&spaceId=b9664e7a-d593-464f-88e0-4e248b735e18&expirationTimestamp=1728979200000&signature=YeRvPb0yEyM5TETwQ-9c-r0N2SPFvoLUOB-LN7fZY5s&downloadName=image.png)
 Por el momento solo se implementa los dos microservicios con su respectiva base de datos y el broker de mensajes
 ## Microservicio de clientes
 Este microservicio gestiona clientes.
