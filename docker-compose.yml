@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+
+  clients_db:
+    image: postgres:15.2
+    container_name: clients_db
+    restart: always
+    volumes:
+      - ./db/sql/create_schema.sql:/docker-entrypoint-initdb.d/BaseDatosClientes.sql
+    environment:
+      - POSTGRES_DB=clients-db
+      - POSTGRES_USER=crisdaneo24
+      - POSTGRES_PASSWORD=crisdaneo24@
+    ports:
+      - "5432:5432"
+    networks:
+      - neoris-backend
+
+  transactions_db:
+    image: postgres:15.2
+    container_name: transactions_db
+    restart: always
+    volumes:
+      - ./db/sql/create_schema.sql:/docker-entrypoint-initdb.d/BaseDatosCuentasMovimientos.sql
+    environment:
+      - POSTGRES_DB=transactions-db
+      - POSTGRES_USER=crisdaneo24
+      - POSTGRES_PASSWORD=crisdaneo24@
+    ports:
+      - "5433:5432"
+    networks:
+      - neoris-backend
+
+  rabbitmq:
+    image: rabbitmq:3.8.11-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: on-failure
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - neoris-backend
+
+
+  ms-client-management:
+    build:
+      context: .
+      dockerfile: ./clientManagement/Dockerfile
+    container_name: ms-client-management
+    ports:
+      - "8080:8080"
+    depends_on:
+      - clients_db
+    networks:
+      - neoris-backend
+    tty: true
+    environment:
+      - DB_HOST=clients_db
+      - DB_PORT=5432
+      - DB_NAME=clients-db
+      - DB_USER=crisdaneo24
+      - DB_PASSWORD=crisdaneo24@
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+
+  ms-transactions:
+    build:
+      context: .
+      dockerfile: ./transactionAccount/Dockerfile
+    container_name: ms-transactions
+    ports:
+      - "8081:8081"
+    depends_on:
+      - clients_db
+    networks:
+      - neoris-backend
+    tty: true
+    environment:
+      - DB_HOST=transactions_db
+      - DB_PORT=5432
+      - DB_NAME=transactions-db
+      - DB_USER=crisdaneo24
+      - DB_PASSWORD=crisdaneo24@
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+
+
+networks:
+  neoris-backend:
