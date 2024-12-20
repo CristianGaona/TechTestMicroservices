@@ -57,7 +57,6 @@ public class ConsumerService {
 
     @RabbitListener(queues = QUEUE_CLIENT_EXISTS, containerFactory = "jsaFactory")
     public Boolean sendAndReceiveClientExists(Long id) {
-        System.out.println("RECIBIDO ->: " + id);
         Optional<Client> clientExists = clientService.findById(id);
         return clientExists.isPresent();
     }

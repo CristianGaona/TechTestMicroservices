@@ -60,4 +60,17 @@ public class ClientMock {
         return client;
 
     }
+
+    public static ClientRequestDto UpdatedClientRequestDto(){
+        ClientRequestDto clientRequestDto = new ClientRequestDto();
+        clientRequestDto.setName("John Updated");
+        clientRequestDto.setPhoneNumber("0987654321");
+        clientRequestDto.setIdentification("1106015602");
+        clientRequestDto.setAge(30);
+        clientRequestDto.setStatus(true);
+        clientRequestDto.setPassword("newpassword123");
+        clientRequestDto.setAddress("Updated Address");
+        clientRequestDto.setGender("MALE");
+        return clientRequestDto;
+    }
 }
