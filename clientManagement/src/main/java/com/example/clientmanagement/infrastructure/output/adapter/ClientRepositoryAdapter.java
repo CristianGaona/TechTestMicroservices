@@ -69,7 +69,6 @@ public class ClientRepositoryAdapter implements ClientRepository {
         BeanUtils.copyProperties(client, clientEntity);
         clientRepositoryJpa.save(clientEntity);
         BeanUtils.copyProperties(clientEntity, client);
-        //System.out.println("CLIENTE-SERVICIO" + client.getClientId());
         return client;
 
     }

@@ -46,11 +46,7 @@ public class ClientControllerIntegrationTest {
     void setup() {
         clientRepository.deleteAll();
         client = ClientMock.createClientEntity();
-        System.out.println("Client ->"+ client.getClientId());
-        //ClientEntity clientEntity = new ClientEntity();
-        //BeanUtils.copyProperties(client, clientEntity);
         clientRepository.save(client);
-
     }
 
     @Test
