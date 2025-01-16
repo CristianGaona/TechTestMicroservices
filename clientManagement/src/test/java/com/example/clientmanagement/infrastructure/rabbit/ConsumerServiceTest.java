@@ -1,5 +1,6 @@
 package com.example.clientmanagement.infrastructure.rabbit;
 
+import com.example.clientmanagement.application.output.port.ClientRepository;
 import com.example.clientmanagement.domain.common.dto.messages.ClientIdListMessage;
 import com.example.clientmanagement.domain.model.Client;
 import com.example.clientmanagement.infrastructure.input.adapter.ConsumerAdapter;
@@ -37,7 +38,7 @@ class ConsumerServiceTest {
     private ObjectMapper mapper;
 
     @Autowired
-    private ClientRepositoryJpa clientRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
     private ConsumerAdapter consumerService;

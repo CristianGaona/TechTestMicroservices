@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
 
 import com.example.clientmanagement.application.input.port.ClientService;
+import com.example.clientmanagement.application.output.port.ClientRepository;
 import com.example.clientmanagement.domain.common.dto.ClientRequestDto;
 import com.example.clientmanagement.domain.common.mapper.ClientMapper;
 import com.example.clientmanagement.infrastructure.input.adapter.exception.GeneralException;
@@ -26,7 +27,7 @@ class ClientServiceImplTest {
     private ClientMapper clientMapper;
 
     @MockBean
-    private ClientRepositoryJpa clientRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
     private ClientService clientService;

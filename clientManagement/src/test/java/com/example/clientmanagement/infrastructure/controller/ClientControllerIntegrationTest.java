@@ -1,16 +1,21 @@
 package com.example.clientmanagement.infrastructure.controller;
 
+import com.example.clientmanagement.application.output.port.ClientRepository;
+import com.example.clientmanagement.infrastructure.output.adapter.ClientRepositoryAdapter;
+import com.example.clientmanagement.infrastructure.output.adapter.repository.ClientRepositoryJpa;
+import com.example.clientmanagement.infrastructure.output.adapter.repository.entity.ClientEntity;
 import com.example.clientmanagement.mockData.ClientMock;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.clientmanagement.domain.common.dto.ClientRequestDto;
 import com.example.clientmanagement.domain.model.Client;
-import com.example.clientmanagement.infrastructure.output.adapter.repository.ClientRepositoryJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Import(ClientRepositoryAdapter.class)
 public class ClientControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
@@ -31,8 +37,7 @@ public class ClientControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private ClientRepositoryJpa clientRepository;
-
+    private ClientRepository clientRepository;
 
     private Client client;
 
@@ -41,7 +46,11 @@ public class ClientControllerIntegrationTest {
     void setup() {
         clientRepository.deleteAll();
         client = ClientMock.createClientEntity();
+        System.out.println("Client ->"+ client.getClientId());
+        //ClientEntity clientEntity = new ClientEntity();
+        //BeanUtils.copyProperties(client, clientEntity);
         clientRepository.save(client);
+
     }
 
     @Test
@@ -94,7 +103,7 @@ public class ClientControllerIntegrationTest {
 
     @Test
     void testDeleteFailPublisher() throws Exception {
-        mockMvc.perform(delete("/api/v1/clients/{id}", client.getClientId())
+                mockMvc.perform(delete("/api/v1/clients/{id}", client.getClientId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is5xxServerError())
                 .andExpect(jsonPath("$.message").value("An unexpected error has occurred. Please try again later."));

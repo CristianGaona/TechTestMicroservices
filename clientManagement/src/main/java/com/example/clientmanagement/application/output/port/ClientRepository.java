@@ -17,4 +17,6 @@ public interface ClientRepository {
     public void delete(Client client);
     public Optional<Client> findById(Long id);
     public List<Client> findAll();
+    public void deleteAll();
+    public Boolean existsById(Long id);
 }

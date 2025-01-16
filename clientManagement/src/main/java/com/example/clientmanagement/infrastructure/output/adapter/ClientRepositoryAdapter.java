@@ -6,11 +6,15 @@ import com.example.clientmanagement.domain.model.Client;
 import com.example.clientmanagement.infrastructure.output.adapter.repository.ClientRepositoryJpa;
 import com.example.clientmanagement.infrastructure.output.adapter.repository.entity.ClientEntity;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class ClientRepositoryAdapter implements ClientRepository {
@@ -28,22 +32,34 @@ public class ClientRepositoryAdapter implements ClientRepository {
 
     @Override
     public Client findByIdentification(String identification) {
+        ClientEntity clientEntity = clientRepositoryJpa.findByIdentification(identification);
+        if(ObjectUtils.isEmpty(clientEntity)){
+            return null;
+        }
         Client client = new Client();
-        BeanUtils.copyProperties(clientRepositoryJpa.findByIdentification(identification), client);
+        BeanUtils.copyProperties(clientEntity, client);
         return client;
     }
 
     @Override
     public Client findByPhoneNumber(String phoneNumber) {
+        ClientEntity clientEntity = clientRepositoryJpa.findByPhoneNumber(phoneNumber);
+        if(ObjectUtils.isEmpty(clientEntity)){
+            return null;
+        }
         Client client = new Client();
-        BeanUtils.copyProperties(clientRepositoryJpa.findByPhoneNumber(phoneNumber), client);
+        BeanUtils.copyProperties(clientEntity, client);
         return client;
     }
 
     @Override
     public Client findByClientId(Long clientId) {
+        ClientEntity clientEntity = clientRepositoryJpa.findByClientId(clientId);
+        if(ObjectUtils.isEmpty(clientEntity)){
+            return null;
+        }
         Client client = new Client();
-        BeanUtils.copyProperties( clientRepositoryJpa.findByClientId(clientId), client);
+        BeanUtils.copyProperties( clientEntity, client);
         return client;
     }
 
@@ -52,7 +68,10 @@ public class ClientRepositoryAdapter implements ClientRepository {
         ClientEntity clientEntity = new ClientEntity();
         BeanUtils.copyProperties(client, clientEntity);
         clientRepositoryJpa.save(clientEntity);
+        BeanUtils.copyProperties(clientEntity, client);
+        //System.out.println("CLIENTE-SERVICIO" + client.getClientId());
         return client;
+
     }
 
     @Override
@@ -64,16 +83,38 @@ public class ClientRepositoryAdapter implements ClientRepository {
 
     @Override
     public Optional<Client> findById(Long id) {
-        Optional<Client> client = Optional.empty();
-        BeanUtils.copyProperties(clientRepositoryJpa.findById(id), client);
-        return client;
+        return clientRepositoryJpa.findById(id)
+            .map(entity -> {
+                Client client = new Client();
+                BeanUtils.copyProperties(entity, client);
+                return client;
+            });
     }
 
     @Override
     public List<Client> findAll() {
-        List<Client> clients = new ArrayList<>();
-        BeanUtils.copyProperties(clientRepositoryJpa.findAll(), clients);
-        return  clients;
+        List<ClientEntity> clientEntities = clientRepositoryJpa.findAll();
+        if(ObjectUtils.isEmpty(clientEntities)){
+            return Collections.emptyList();
+        }
+
+        return clientEntities.stream()
+                .map(entity -> {
+                    Client client = new Client();
+                    BeanUtils.copyProperties(entity, client);
+                    return client;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteAll() {
+        clientRepositoryJpa.deleteAll();
+    }
+
+    @Override
+    public Boolean existsById(Long id) {
+        return clientRepositoryJpa.existsById(id);
     }
 
 }
