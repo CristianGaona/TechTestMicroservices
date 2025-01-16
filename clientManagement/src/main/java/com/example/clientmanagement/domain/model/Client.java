@@ -9,8 +9,6 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "client")
 public class Client extends Person implements Serializable {
 
     @Id

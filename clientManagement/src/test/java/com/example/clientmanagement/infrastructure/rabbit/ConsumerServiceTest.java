@@ -1,8 +1,9 @@
 package com.example.clientmanagement.infrastructure.rabbit;
 
-import com.example.clientmanagement.common.dto.messages.ClientIdListMessage;
+import com.example.clientmanagement.domain.common.dto.messages.ClientIdListMessage;
 import com.example.clientmanagement.domain.model.Client;
-import com.example.clientmanagement.infrastructure.repository.ClientRepository;
+import com.example.clientmanagement.infrastructure.input.adapter.ConsumerAdapter;
+import com.example.clientmanagement.infrastructure.output.adapter.repository.ClientRepositoryJpa;
 import com.example.clientmanagement.mockData.ClientMock;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,10 +37,10 @@ class ConsumerServiceTest {
     private ObjectMapper mapper;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientRepositoryJpa clientRepository;
 
     @Autowired
-    private ConsumerService consumerService;
+    private ConsumerAdapter consumerService;
 
     private Client client;
 

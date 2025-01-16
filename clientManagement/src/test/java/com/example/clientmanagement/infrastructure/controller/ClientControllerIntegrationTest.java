@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.clientmanagement.common.dto.ClientRequestDto;
+import com.example.clientmanagement.domain.common.dto.ClientRequestDto;
 import com.example.clientmanagement.domain.model.Client;
-import com.example.clientmanagement.infrastructure.repository.ClientRepository;
+import com.example.clientmanagement.infrastructure.output.adapter.repository.ClientRepositoryJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ public class ClientControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientRepositoryJpa clientRepository;
 
 
     private Client client;

@@ -1,7 +1,7 @@
 package com.example.clientmanagement.mockData;
 
-import com.example.clientmanagement.common.dto.ClientRequestDto;
-import com.example.clientmanagement.common.dto.interfaces.ClientListResponseDto;
+import com.example.clientmanagement.domain.common.dto.ClientRequestDto;
+import com.example.clientmanagement.domain.common.dto.interfaces.ClientListResponseDto;
 import com.example.clientmanagement.domain.enums.Gender;
 import com.example.clientmanagement.domain.model.Client;
 

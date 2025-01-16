@@ -1,9 +1,10 @@
 package com.example.clientmanagement.infrastructure.controller;
 
-import com.example.clientmanagement.application.service.ClientService;
-import com.example.clientmanagement.common.dto.ClientRequestDto;
-import com.example.clientmanagement.common.dto.interfaces.ClientListResponseDto;
+import com.example.clientmanagement.application.input.port.ClientService;
+import com.example.clientmanagement.domain.common.dto.ClientRequestDto;
+import com.example.clientmanagement.domain.common.dto.interfaces.ClientListResponseDto;
 import com.example.clientmanagement.domain.model.Client;
+import com.example.clientmanagement.infrastructure.input.adapter.rest.impl.ClientController;
 import com.example.clientmanagement.mockData.ClientMock;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
