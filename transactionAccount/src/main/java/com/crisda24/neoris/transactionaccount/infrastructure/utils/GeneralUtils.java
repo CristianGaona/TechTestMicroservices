@@ -1,6 +1,6 @@
 package com.crisda24.neoris.transactionaccount.infrastructure.utils;
 
-import com.crisda24.neoris.transactionaccount.domain.exceptions.GeneralException;
+import com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.exceptions.GeneralException;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDate;

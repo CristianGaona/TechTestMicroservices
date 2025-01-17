@@ -1,18 +1,22 @@
 package com.crisda24.neoris.transactionaccount.infrastructure.repositories.account;
 
+import com.crisda24.neoris.transactionaccount.application.output.port.AccountRepository;
 import com.crisda24.neoris.transactionaccount.domain.models.Account;
-import com.crisda24.neoris.transactionaccount.domain.models.Movement;
+import com.crisda24.neoris.transactionaccount.infrastructure.output.adapter.AccountRepositoryAdapter;
+import com.crisda24.neoris.transactionaccount.infrastructure.output.adapter.repositories.entity.AccountEntity;
 import com.crisda24.neoris.transactionaccount.mockData.AccountMock;
-import com.crisda24.neoris.transactionaccount.mockData.MovementMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.annotation.Import;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
+@Import(AccountRepositoryAdapter.class)
 class AccountRepositoryTest {
     @Autowired
     AccountRepository accountRepository;
@@ -23,10 +27,12 @@ class AccountRepositoryTest {
     @BeforeEach
     void setUp() {
         Account account = AccountMock.createAccountEntity();
+        AccountEntity accountEntity = new AccountEntity();
+        BeanUtils.copyProperties(account, accountEntity);
         if (account.getIdAccount() == null) {
-            testEntityManager.persist(account);
+            testEntityManager.persist(accountEntity);
         } else {
-            testEntityManager.merge(account);
+            testEntityManager.merge(accountEntity);
         }
         testEntityManager.flush();
 

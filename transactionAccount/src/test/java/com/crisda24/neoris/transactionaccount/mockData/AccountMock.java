@@ -1,7 +1,7 @@
 package com.crisda24.neoris.transactionaccount.mockData;
 
-import com.crisda24.neoris.transactionaccount.application.common.dtos.account.AccountRequestDto;
-import com.crisda24.neoris.transactionaccount.application.common.dtos.account.AccountRequestPatchDto;
+import com.crisda24.neoris.transactionaccount.domain.common.dtos.account.AccountRequestDto;
+import com.crisda24.neoris.transactionaccount.domain.common.dtos.account.AccountRequestPatchDto;
 import com.crisda24.neoris.transactionaccount.domain.enums.AccountType;
 import com.crisda24.neoris.transactionaccount.domain.models.Account;
 

@@ -1,12 +1,13 @@
 package com.crisda24.neoris.transactionaccount.application.services.account.impl;
 
-import com.crisda24.neoris.transactionaccount.application.common.dtos.account.AccountRequestDto;
-import com.crisda24.neoris.transactionaccount.application.common.mappers.account.AccountMapper;
-import com.crisda24.neoris.transactionaccount.application.services.account.AccountService;
-import com.crisda24.neoris.transactionaccount.domain.exceptions.GeneralException;
+import com.crisda24.neoris.transactionaccount.application.output.port.AccountRepository;
+import com.crisda24.neoris.transactionaccount.domain.common.dtos.account.AccountRequestDto;
+import com.crisda24.neoris.transactionaccount.domain.common.mappers.account.AccountMapper;
+import com.crisda24.neoris.transactionaccount.application.input.port.AccountService;
+import com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.exceptions.GeneralException;
 import com.crisda24.neoris.transactionaccount.domain.models.Account;
-import com.crisda24.neoris.transactionaccount.infrastructure.rabbit.PublisherService;
-import com.crisda24.neoris.transactionaccount.infrastructure.repositories.account.AccountRepository;
+import com.crisda24.neoris.transactionaccount.infrastructure.output.adapter.PublisherAdapter;
+import com.crisda24.neoris.transactionaccount.infrastructure.output.adapter.repositories.AccountRepositoryJpa;
 import com.crisda24.neoris.transactionaccount.mockData.AccountMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,7 @@ class AccountServiceImplTest {
     private AccountRepository accountRepository;
 
     @MockBean
-    private PublisherService publisherService;
+    private PublisherAdapter publisherService;
 
     @BeforeEach
     void setUp() {
