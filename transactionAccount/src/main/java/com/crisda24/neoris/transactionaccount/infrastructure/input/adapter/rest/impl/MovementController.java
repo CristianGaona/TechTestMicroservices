@@ -1,4 +1,4 @@
-package com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.exceptions.rest.impl;
+package com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.rest.impl;
 
 import com.crisda24.neoris.transactionaccount.domain.common.dtos.GeneralResponseDto;
 import com.crisda24.neoris.transactionaccount.domain.common.dtos.movement.MovementRangeDatesDto;

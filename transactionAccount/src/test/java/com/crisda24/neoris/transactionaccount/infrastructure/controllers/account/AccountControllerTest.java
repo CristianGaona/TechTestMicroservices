@@ -4,7 +4,7 @@ import com.crisda24.neoris.transactionaccount.domain.common.dtos.account.Account
 import com.crisda24.neoris.transactionaccount.domain.common.dtos.account.AccountRequestPatchDto;
 import com.crisda24.neoris.transactionaccount.application.input.port.AccountService;
 import com.crisda24.neoris.transactionaccount.domain.models.Account;
-import com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.exceptions.rest.impl.AccountController;
+import com.crisda24.neoris.transactionaccount.infrastructure.input.adapter.rest.impl.AccountController;
 import com.crisda24.neoris.transactionaccount.mockData.AccountMock;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;

@@ -14,7 +14,7 @@ public class MovementRangeDatesDto {
     private String type;
     private String date;
     private String accountNumber;
-    private BigDecimal initBalance;
+    private BigDecimal previusBalance;
     private String movement;
     private BigDecimal balance;
     private String clientName;
